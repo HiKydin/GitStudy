@@ -6,7 +6,7 @@ SVN是**集中式版本控制系统**，版本库是集中放在**中央服务�
 
 Git是**分布式版本控制系统**，没有中央服务器，每个人的电脑就是一个完整的版本库，工作的时候无需联网。协同的方法是这样的：当你在自己的电脑上修改了文件A，其他人也修改了文件A，只需互相把各自的修改push给对方，就可以互相看到对方的修改了
 但是每个人都有完整的代码，可能会有安全隐患  
-==Git是目前世界上最先进的分布式版本控制系统==
+`Git是目前世界上最先进的分布式版本控制系统`
 
 ## 2.安装
 
@@ -14,9 +14,9 @@ Git是**分布式版本控制系统**，没有中央服务器，每个人的电�
 
 ![](Install.jpg)
 
-**Git Bash**：Linux风格的命令行
-**Git CMD**：Windows风格的命令行
-**Git GUI**：图形界面的Git
+* **Git Bash**：Linux风格的命令行  
+* **Git CMD**：Windows风格的命令行  
+* **Git GUI**：图形界面的Git  
 
 ### 2.1必要配置
 
@@ -35,7 +35,7 @@ git config --system --list
 git config --global --list
 ~~~
 
-==安装后的第一步就是设置用户名和邮箱==
+`安装后的第一步就是设置用户名和邮箱`
 ~~~git
 git config --global user.name "用户名"
 git config --global usern.email "邮箱"
@@ -47,10 +47,10 @@ git config --global usern.email "邮箱"
 
 ![](GitFile.jpg)
 
-Workspace：工作区，平时存放项目代码的地方  
-Index/Stage：暂存区，用于临时存放改动，事实上它只是一个文件，保存即将提交到文件列表的信息  
-Repository：仓库区（或者本地仓库），就是安全存放数据的位置，这里有你提交到所有版本的数据。其中Head指向最新放入仓库的版本  
-Remote：远程仓库，托管代码的服务器。  
+* **Workspace**：工作区，平时存放项目代码的地方  
+* **Index/Stage**：暂存区，用于临时存放改动，事实上它只是一个文件，保存即将提交到文件列表的信息  
+* **Repository**：仓库区（或者本地仓库），就是安全存放数据的位置，这里有你提交到所有版本的数据。其中Head指向最新放入仓库的版本  
+* **Remote**：远程仓库，托管代码的服务器。  
 
 >工作流程
 
@@ -59,7 +59,7 @@ git的工作流程一般是这样的：
 2.将需要进行版本管理的文件放入暂存区域；  
 3.将暂存区域的文件提交到git仓库。  
 
-因此，git管理的文件有三种状态：==已修改（modified）、已暂存（staged）、已提交（committed）==
+因此，git管理的文件有三种状态：`已修改（modified）、已暂存（staged）、已提交（committed）`
 
 ![](GitWorking.png)
 
@@ -95,10 +95,10 @@ git clone [需要克隆的仓库的网址]
 
 版本控制就是对文件的版本进行控制，要对文件进行修改、提交等操作，首先要知道文件当前处于什么状态
 
-**Untracked**：未跟踪，此文件在文件夹中，但并没有加入到git库中，不参与版本控制，通过==git add==命令，状态变为==Staged==
-**Unmodify**：文件已经入库，未修改，即版本库中的文件快照内容与文件夹中完全一致，这种类型的文件有两种去处，如果它被修改，而变为==Modified==，如果使用==git rm==移出版本库，则变为==Untracked==文件
-**Modified**：文件已修改，仅仅是修改，并没有进行其他的操作，这个文件也有两个去处，通过==git add==可进入暂存==Staged==状态，使用==git checkout==则丢弃修改，返回到==Unmodify==状态，这个==git checkout==即从库中取出文件，覆盖当前修改！
-**Staged**：暂存状态。执行==git commit==则将修改同步到库中，这时候库中文件与本地文件又变为一致，文件变为==Unmodify==状态。执行==git reset HEAD filename==取消暂存，文件状态为==Modified==
+* **Untracked**：未跟踪，此文件在文件夹中，但并没有加入到git库中，不参与版本控制，通过`git add`命令，状态变为`Staged`  
+* **Unmodify**：文件已经入库，未修改，即版本库中的文件快照内容与文件夹中完全一致，这种类型的文件有两种去处，如果它被修改，而变为`Modified`，如果使用`git rm`移出版本库，则变为`Untracked`文件  
+* **Modified**：文件已修改，仅仅是修改，并没有进行其他的操作，这个文件也有两个去处，通过`git add`可进入暂存`Staged`状态，使用`git checkout`则丢弃修改，返回到`Unmodify`状态，这个`git checkou`t即从库中取出文件，覆盖当前修改！  
+* **Staged**：暂存状态。执行`git commit`则将修改同步到库中，这时候库中文件与本地文件又变为一致，文件变为`Unmodify`状态。执行`git reset HEAD filename`取消暂存，文件状态为`Modified`  
 
 >查看文件状态
 ~~~git
