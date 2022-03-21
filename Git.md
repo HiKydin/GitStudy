@@ -97,7 +97,7 @@ git clone [需要克隆的仓库的网址]
 
 * **Untracked**：未跟踪，此文件在文件夹中，但并没有加入到git库中，不参与版本控制，通过`git add`命令，状态变为`Staged`  
 * **Unmodify**：文件已经入库，未修改，即版本库中的文件快照内容与文件夹中完全一致，这种类型的文件有两种去处，如果它被修改，而变为`Modified`，如果使用`git rm`移出版本库，则变为`Untracked`文件  
-* **Modified**：文件已修改，仅仅是修改，并没有进行其他的操作，这个文件也有两个去处，通过`git add`可进入暂存`Staged`状态，使用`git checkout`则丢弃修改，返回到`Unmodify`状态，这个`git checkou`t即从库中取出文件，覆盖当前修改！  
+* **Modified**：文件已修改，仅仅是修改，并没有进行其他的操作，这个文件也有两个去处，通过`git add`可进入暂存`Staged`状态，使用`git checkout`则丢弃修改，返回到`Unmodify`状态，这个`git checkou`t即从库中取出文件，覆盖当前修改！
 * **Staged**：暂存状态。执行`git commit`则将修改同步到库中，这时候库中文件与本地文件又变为一致，文件变为`Unmodify`状态。执行`git reset HEAD filename`取消暂存，文件状态为`Modified`  
 
 >查看文件状态
@@ -129,6 +129,32 @@ build/   //忽略build/目录下的所有文件
 
 ## 6.Git中的分支
 
+### Git中的分支类型
+
+#### master 分支
+* master 为产品主分支，该分支为只读唯一分支，也是用于部署生产环境的分支，需确保master分支的稳定性。
+* master 分支一般由release分支或hotfix分支合并，任何情况下都不应该直接修改master分支代码。
+* 产品的功能全部实现后，最终在master分支对外发布，另外所有在master分支的推送应该打标签（tag）做记录，方便追溯。
+* master 分支不可删除。
+
+#### develop 分支
+* develop 为主开发分支，基于master分支创建，始终保持最新完成功能的代码以及bug修复后的代码。
+* develop 分支为只读唯一分支，只能从其他分支合并，不可以直接在该分支做功能开发或bug修复。
+* 一般开发新功能时，feature分支都是基于develop分支下创建的。
+* develop 分支包含所有要发布到下一个release的代码。
+* feature功能分支完成后, 开发人员需合并到develop分支(不推送远程)，需先将develop分支合并到feature，解决完冲突后再合并到develop分支。
+* 当所有新功能开发完成后，开发人员并自测完成后，此时从develop拉取release分支，进行提测。
+* release或hotfix 分支上线完成后, 开发人员需合并到develop分支并推送远程。
+* develop 分支不可删。
+
+#### feature 分支
+* feature 分支通常为新功能或新特性开发分支，以develop分支为基础创建feature分支。
+
+#### release 分支
+* release 分支为预上线分支，基于本次上线所有的feature分支合并到develop分支之后，从develop分支创建。
+
+#### hotfix 分支
+* hotfix 分支为线上bug修复分支或叫补丁分支，主要用于对线上的版本进行bug修复。
 ~~~git
 //列出所有本地分支
 git branch
@@ -153,7 +179,18 @@ git push origin --delete [branch_name]
 git branch -dr [remote/branch]
 ~~~
 
-## 7.结尾
+## 7.日常使用git辅助开发的工作流
+新项目：
+~~~git
+1.在GitHub上创建仓库
+2.在克隆到本地
+3.本地工作完成后git add .添加到暂存区
+4.添加到暂存区后git commit -m "提交信息"提交到本地仓库
+5.提交到本地仓库后git push origin main提交到远程仓库
+~~~
+## 8.常见问题及解决
+
+## 9.结尾
 
 学习Git，最重要的是在日常中使用它，从而会越发熟练  
 附上学习网站  
