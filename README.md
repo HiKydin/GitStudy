@@ -43,6 +43,11 @@ git config --global user.name "用户名"
 git config --global usern.email "邮箱"
 ~~~
 
+删除某个配置
+~~~git
+git config --global --unset user.name //删除用户名
+~~~
+
 ## 三.Git基本理论（核心）
 
 >工作区域
