@@ -41,6 +41,8 @@ git config --global --list
 ~~~git
 git config --global user.name "用户名"
 git config --global usern.email "邮箱"
+
+ssh -T git@github.com  //连接测试，成功连接后返回“Hi+你的用户名”
 ~~~
 
 删除某个配置
@@ -109,12 +111,8 @@ git clone [需要克隆的仓库的网址]
 
 >查看文件状态
 ~~~git
-//查看指定文件状态
-git status [filename]
-
-//查看所有文件状态
-git status
-
+git status [filename]   //查看指定文件状态
+git status          //查看所有文件状态
 git add .             //添加所有文件到暂存区  
 git commit -m "内容"  //提交暂存区中的内容到本地仓库
 ~~~
@@ -226,6 +224,16 @@ git push -u origin main    //将本次更改更新到GitHub
 git pull -rebase  //表示“内容抓下来后使用Rebase方式合并”，不加也行
 git push
 ~~~
+
+4、remote: error: GH007: Your push would publish a private email address.
+remote: You can make your email public or disable this protection by visiting:
+remote: http://github.com/settings/emails
+To 仓库地址url
+ ! [remote rejected] main -> main (push declined due to email privacy restrictions)
+error: failed to push some refs to '仓库地址url'
+
+>解决方法——在GitHub的你账号网页上右上角，个人的登录退出的位置，setting->emails->Keep my email address private，把这一项去掉勾选即可。
+
 ## 九.结尾
 
 学习Git，最重要的是在日常中使用它，从而会越发熟练  
