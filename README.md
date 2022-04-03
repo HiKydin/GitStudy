@@ -192,6 +192,35 @@ git branch -dr [remote/branch]
 ~~~
 ## 八.常见问题及解决
 
+1、OpenSSL SSL_read: Connection was reset, errno 10054
+
+>解决：
+
+~~~git
+git config --global http.sslVerify "false"
+~~~
+
+2、如何删除github上的一个仓库里面的某个文件
+
+>在gtihub上只能删除仓库，无法删除某个文件，所有只能通过命令来解决
+
+~~~git
+git pull origin main           //拉去远程仓库的项目
+dir                            //查看有哪些文件夹
+git rm -r --cached test.md      //删除test.md文件
+git commit -m "删除了test.md文件"  //提交，添加操作说明
+git push -u origin main    //将本次更改更新到GitHub
+~~~
+
+3、error: failed to push some refs to '仓库地址url'
+
+>这种情况一般是线上版本比你本地仓库里的那份还要新，所以无法push。解决办法如下：
+
+~~~git
+先拉再推
+git pull -rebase  //表示“内容抓下来后使用Rebase方式合并”，不加也行
+git push
+~~~
 ## 九.结尾
 
 学习Git，最重要的是在日常中使用它，从而会越发熟练  
