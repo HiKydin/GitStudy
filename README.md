@@ -104,11 +104,11 @@ Your identification has been saved in /c/Users/you/.ssh/id_rsa.
 # 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
 ~~~
 
-当你看到上面这段代码的收，那就说明，你的 SSH key 已经创建成功，你只需要添加到github的SSH key上就可以了。
+当你看到上面这段代码，那就说明，你的 SSH key 已经创建成功，你只需要添加到github的SSH key上就可以了。
 
 ##### 3、添加你的 SSH key 到 github上面去
 
-**a、**首先你需要拷贝 id_rsa.pub 文件的内容，你可以用编辑器打开文件复制，也可以用git命令复制该文件的内容，如：
+a、首先你需要拷贝 id_rsa.pub 文件的内容，你可以用编辑器打开文件复制，也可以用git命令复制该文件的内容，如：
 
 ```
 clip < ~/.ssh/id_rsa.pub
@@ -116,11 +116,11 @@ clip < ~/.ssh/id_rsa.pub
 
 Window 使用 clip 命令复制，Mac 则使用 pbcopy 命令，也可以手动打开 **id_rsa.pub** 进行复制。
 
-**b、**登录你的github账号，从右上角的设置（ [Account Settings](https://github.com/settings) ）进入，然后点击菜单栏的 SSH key 进入页面添加 SSH key。
+b、登录你的github账号，从右上角的设置（ [Account Settings](https://github.com/settings) ）进入，然后点击菜单栏的 SSH key 进入页面添加 SSH key。
 
-![添加 SSH key](C:\Library\Project\GitStudy\添加 SSH key.jpg)
+![添加 SSH key](添加 SSH key.jpg)
 
-**c、**点击 Add SSH key 按钮添加一个 SSH key 。把你复制的 SSH key 代码粘贴到 key 所对应的输入框中，记得 SSH key 代码的前后不要留有空格或者回车。当然，上面的 Title 所对应的输入框你也可以输入一个该 SSH key 显示在 github 上的一个别名。默认的会使用你的邮件名称。
+c、点击 Add SSH key 按钮添加一个 SSH key 。把你复制的 SSH key 代码粘贴到 key 所对应的输入框中，记得 SSH key 代码的前后不要留有空格或者回车。当然，上面的 Title 所对应的输入框你也可以输入一个该 SSH key 显示在 github 上的一个别名。默认的会使用你的邮件名称。
 
 ##### 4、测试一下该SSH key
 
